@@ -19,7 +19,9 @@ rental-scraper/
 │       └── data_processor.py     # 数据处理工具
 ├── config/                       # 配置文件
 │   ├── __init__.py
-│   └── settings.py               # 项目配置
+│   ├── public_settings.py        # 公共配置（可上传）
+│   ├── example_settings.py       # 配置示例（可上传）
+│   └── sensitive_settings.py     # 敏感配置（本地使用，不上传）
 ├── scripts/                      # 运行脚本
 │   ├── run_scraper.py            # 运行爬虫
 │   ├── run_layout_analysis.py    # 运行户型分析
@@ -79,10 +81,16 @@ python scripts/run_rent_analysis.py    # 租金分析
 
 ### 配置说明
 
-项目配置位于 `config/settings.py`，包含：
-- 爬虫参数（请求超时、延迟等）
-- 用户代理和Cookie设置
-- 输出路径配置
+项目采用分层配置设计：
+
+- **`config/public_settings.py`**: 公共配置，包含爬虫参数、输出路径等，可安全上传到版本控制系统
+- **`config/example_settings.py`**: 敏感配置示例，展示配置格式，可上传到版本控制系统
+- **`config/sensitive_settings.py`**: 实际的敏感配置（本地使用），包含Cookie、User-Agent等敏感信息，此文件会被`.gitignore`忽略
+
+**配置步骤：**
+1. 复制 `config/example_settings.py` 为 `config/sensitive_settings.py`
+2. 在 `sensitive_settings.py` 中填入您的实际Cookie字符串和User-Agent
+3. 确保 `sensitive_settings.py` 文件不会被提交到版本控制系统
 
 ## 数据格式
 

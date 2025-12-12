@@ -9,7 +9,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import re
 import os
-from config.settings import COOKIE_STRING, USER_AGENT, MAX_PAGES, REQUEST_TIMEOUT, DELAY_MIN, DELAY_MAX, OUTPUT_DIR, OUTPUT_FILENAME_PREFIX, DATA_FIELDS
+from config import COOKIE_STRING, USER_AGENT, MAX_PAGES, REQUEST_TIMEOUT, DELAY_MIN, DELAY_MAX, OUTPUT_DIR, OUTPUT_FILENAME_PREFIX, DATA_FIELDS
 
 class LianjiaSpider:
     def __init__(self, cookie_string=None):
